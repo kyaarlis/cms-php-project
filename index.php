@@ -41,7 +41,7 @@
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $date; ?></p>
                 <hr>
-                <img class="img-responsive" src="<?php echo $img; ?>" alt="">
+                <img class="img-responsive" src="images/<?php echo $img; ?>" alt="">
                 <hr>
                 <p><?php echo $content; ?></p>
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -52,7 +52,8 @@
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
-              <?php include "includes/sidebar.php" ?>
+              <?php include "includes/sidebar.php"; ?>
+        
 
         </div>
         <!-- /.row -->
