@@ -19,7 +19,7 @@
                     <small>Secondary Text</small>
                 </h1>
 
-                <!-- First Blog Post -->
+                <!-- Blog Post -->
                 <?php
                 $query = "SELECT * FROM posts";
 
@@ -31,24 +31,22 @@
                     $date = $post['date'];
                     $img = $post['image'];
                     $content = $post['content'];
+                    ?>
 
-                    echo "
-                    <h2>
-                    <a href='#'>{$title}</a>
+                <h2>
+                    <a href="#"><?php echo $title; ?></a>
                 </h2>
-                <p class='lead'>
-                    by <a href='index.php'>{$author}</a>
+                <p class="lead">
+                    by <a href="index.php"><?php echo $author; ?></a>
                 </p>
-                <p><span class='glyphicon glyphicon-time'></span> Posted on {$date}</p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $date; ?></p>
                 <hr>
-                <img class='img-responsive' src={$img} alt=''>
+                <img class="img-responsive" src="<?php echo $img; ?>" alt="">
                 <hr>
-                <p>{$content}</p>
-                <a class='btn btn-primary' href='#'>Read More <span class='glyphicon glyphicon-chevron-right'></span></a>";
-                }
+                <p><?php echo $content; ?></p>
+                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <?php } ?>
                 
-                ?>
-
                 <hr>
 
             </div>
