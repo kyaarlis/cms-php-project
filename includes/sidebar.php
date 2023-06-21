@@ -3,36 +3,8 @@
 <!-- Blog Search Well -->
 <div class="well">
 
-    <?php
-
-    if (isset($_POST['submit'])) {
-
-        $search = $_POST['search'];
-        // $search = strtolower($search);
-        // $search = mysqli_real_escape_string($conn, $search);
-
-        $query = "SELECT * FROM posts ";
-        $query .= "WHERE tags LIKE '%" . $search . "%' ";
-
-        $tag_query = mysqli_query($conn, $query);
-
-        if (!$tag_query) {
-            die ('Query error!' . mysqli_error($conn));
-        }
-
-        $count = mysqli_num_rows($tag_query);
-
-        if ($count == 0) {
-            echo "NO RESULT, " . $count;
-        } else {
-            echo "legit: " . $count;
-        }
-    }
-    
-    ?>
-
     <h4>Blog Search</h4>
-    <form action="index.php" method="post">
+    <form action="search.php" method="post">
         <div class="input-group">
             <input type="text" class="form-control" name="search">
             <span class="input-group-btn">

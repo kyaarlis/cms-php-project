@@ -21,31 +21,35 @@
 
                 <!-- Blog Post -->
                 <?php
-                $query = "SELECT * FROM posts";
+                    $query = "SELECT * FROM posts";
 
-                $post_query = mysqli_query($conn, $query);
+                    $post_query = mysqli_query($conn, $query);
 
-                while ($post = mysqli_fetch_assoc($post_query)) {
-                    $title = $post['title'];
-                    $author = $post['author'];
-                    $date = $post['date'];
-                    $img = $post['image'];
-                    $content = $post['content'];
-                    ?>
+                    if (!$post_query) {
+                        die ('Query error!' . mysqli_error($conn));
+                    }
 
-                <h2>
-                    <a href="#"><?php echo $title; ?></a>
-                </h2>
-                <p class="lead">
-                    by <a href="index.php"><?php echo $author; ?></a>
-                </p>
-                <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $date; ?></p>
-                <hr>
-                <img class="img-responsive" src="images/<?php echo $img; ?>" alt="">
-                <hr>
-                <p><?php echo $content; ?></p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-            <?php } ?>
+                     while ($post = mysqli_fetch_assoc($post_query)) {
+                        $title = $post['title'];
+                        $author = $post['author'];
+                        $date = $post['date'];
+                        $img = $post['image'];
+                        $content = $post['content'];
+                        ?>
+
+                    <h2>
+                        <a href="#"><?php echo $title; ?></a>
+                    </h2>
+                    <p class="lead">
+                        by <a href="index.php"><?php echo $author; ?></a>
+                    </p>
+                    <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $date; ?></p>
+                    <hr>
+                    <img class="img-responsive" src="images/<?php echo $img; ?>" alt="">
+                    <hr>
+                    <p><?php echo $content; ?></p>
+                    <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <?php } ?>
                 
                 <hr>
 
