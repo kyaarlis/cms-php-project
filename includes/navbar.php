@@ -17,7 +17,6 @@
                 <ul class="nav navbar-nav">
 
                 <?php 
-
                 $query = "SELECT * FROM categories";
 
                 $categories = mysqli_query($conn, $query);
@@ -28,6 +27,7 @@
                     echo "<li><a href='#'>{$title}</a></li>";
                 }   
                 ?>
+                <li><a href="admin">Admin</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

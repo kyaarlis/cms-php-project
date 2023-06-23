@@ -18,6 +18,17 @@
                             Wellcome to Admin
                             <small>Author</small>
                         </h1>
+                        <div class="col-xs-6">
+                            <form action="">
+                                <div class="form-group">
+                                    <label for="title">Category title</label>
+                                    <input type="text" id="title" class="form-control" name="title">
+                                </div>
+                                <div class="form-group">
+                                    <input class="btn btn-primary" type="submit" name="submit" value="Add Categorie">
+                                </div>
+                            </form>
+                        </div> 
                     </div>
                 </div>
                 <!-- /.row -->
