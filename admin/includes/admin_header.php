@@ -1,4 +1,9 @@
+<?php ob_start(); ?>
 <?php include "../db/db.php"; ?>
+
+<?php session_start(); ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
