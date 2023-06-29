@@ -1,34 +1,4 @@
-                    <?php
-                    include "functions.php";
-
-                    if (isset($_POST['add_post'])) {
-                        $title = $_POST['title'];
-                        $category_id = $_POST['cat_id'];
-                        $author = $_POST['author'];
-                        $status = $_POST['status'];
-
-                        $image = $_FILES['image']['name'];
-                        $img_temp = $_FILES['image']['tmp_name'];
-
-
-                        $tags = $_POST['tags'];
-                        $content = $_POST['content'];
-                        $date = date('d-m-y');
-                        $comment_count = 4;
-
-                        move_uploaded_file($img_temp, "../images/$image");
-
-                        $query = "INSERT INTO posts ";
-                        $query .= "(title, category_id, author, status, image, tags, content, date, comment_count) ";
-                        $query .= "VALUES ('{$title}', {$category_id}, '{$author}', '{$status}', '{$image}', '{$tags}', '{$content}', now(), {$comment_count})"; 
-
-                        $post_query = mysqli_query($conn, $query);
-
-                        confirm_query($post_query);
-                    }
-                    
-                    ?>
-                    
+                    <?php add_post(); ?>
                     
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">

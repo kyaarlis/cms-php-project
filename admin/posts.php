@@ -1,6 +1,6 @@
 <?php 
     include "includes/admin_header.php";
-    include "functions.php";
+    include "functions/posts_functions.php";
  ?>
 
 <body>
@@ -21,32 +21,8 @@
                             Wellcome to Admin
                             <small>Author</small>
                         </h1>
-                        <?php
+                        <?php select_post_actions(); ?>
 
-                        if (isset($_GET['source'])) {
-                            $source = $_GET['source'];
-                        } else {
-                            $source = '';
-                        }
-
-                        switch($source) {
-                            case "add_post":
-                                include "includes/add_post.php";
-                                break;
-                            case 3:
-                                echo "w";
-                                break;
-
-                            default: 
-
-                            include "includes/view_posts.php";
-
-                            break;    
-                        }
-                      ?>
-
-                      
-                     
                     </div>
                 </div>
                 <!-- /.row -->

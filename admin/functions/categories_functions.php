@@ -1,12 +1,5 @@
 <?php
-
-function confirm_query($result) {
-    global $conn;
-
-    if (!$result) {
-        die ('Failed query!' . mysqli_error($conn));
-    }
-}
+include "main_functions.php";
 
 function insert_categories() {
     global $conn;
