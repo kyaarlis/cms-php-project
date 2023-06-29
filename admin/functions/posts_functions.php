@@ -15,9 +15,13 @@ function select_post_actions() {
         case "add_post":
             include "includes/add_post.php";
             break;
-            
+
         case "delete_post":
             delete_posts();
+            break;
+
+        case "edit_post":
+            include "includes/edit_post.php";
             break;
 
         default: 
@@ -60,6 +64,7 @@ function view_all_posts() {
         echo "<td>{$comments}</td>";
         echo "<td>{$date}</td>";
         echo "<td><a href='posts.php?source=delete_post&id={$id}'>Delete</a></td>";
+        echo "<td><a href='posts.php?source=edit_post&id={$id}'>Edit</a></td>";
         echo "</tr>";
     }     
 }
@@ -91,6 +96,45 @@ function add_post() {
         $post_query = mysqli_query($conn, $query);
 
         confirm_query($post_query);
+    }
+}
+
+function edit_post() {
+    global $conn;
+
+    if (isset($_GET['source'])) {
+        $id = $_GET['id']; 
+
+        $query = "SELECT * FROM posts WHERE id = $id ";   
+        $post_id = mysqli_query($conn, $query);
+
+        confirm_query($post_id);
+    }
+
+    if (isset($_POST['edit_post'])) {
+        $title = $_POST['title'];
+        $category_id = $_POST['cat_id'];
+        $author = $_POST['author'];
+        $status = $_POST['status'];
+
+        $image = $_FILES['image']['name'];
+        $img_temp = $_FILES['image']['tmp_name'];
+
+
+        $tags = $_POST['tags'];
+        $content = $_POST['content'];
+        $date = date('d-m-y');
+        $comment_count = 4;
+
+        move_uploaded_file($img_temp, "../images/$image");
+
+        $update_query = "UPDATE posts SET ";
+        $update_query .= "title = '{$title}', category_id = {$category_id}, author = '{$author}', status = '{$status}', image = '{$image}', tags = '{$tags}', content = '{$content}', date = now(), comment_count = {$comment_count} ";
+        $update_query .= "WHERE id = {$id}";
+
+        $result = mysqli_query($conn, $update_query);
+        
+        confirm_query($result);
     }
 }
 
