@@ -39,9 +39,7 @@ function view_all_posts() {
 
     $posts = mysqli_query($conn, $query);
 
-    if (!$posts) {
-        die ("Query err!" . mysqli_error($conn));
-    }
+    confirm_query($posts);
 
     while ($row = mysqli_fetch_assoc($posts)) {
         $id = $row['id'];
@@ -99,6 +97,23 @@ function add_post() {
     }
 }
 
+function display_categories() {
+    global $conn;
+
+    $query = "SELECT * FROM categories";
+
+    $categories = mysqli_query($conn, $query);
+
+    confirm_query($categories);
+
+    while ($row = mysqli_fetch_assoc($categories)) {
+        $id = $row['id'];
+        $category = $row['title'];
+
+        echo "<option value='{$id}'>{$category}</option>";
+    }
+}
+
 function edit_post() {
     global $conn;
 
@@ -113,7 +128,7 @@ function edit_post() {
 
     if (isset($_POST['edit_post'])) {
         $title = $_POST['title'];
-        $category_id = $_POST['cat_id'];
+        $category = $_POST['category'];
         $author = $_POST['author'];
         $status = $_POST['status'];
 
@@ -129,7 +144,7 @@ function edit_post() {
         move_uploaded_file($img_temp, "../images/$image");
 
         $update_query = "UPDATE posts SET ";
-        $update_query .= "title = '{$title}', category_id = {$category_id}, author = '{$author}', status = '{$status}', image = '{$image}', tags = '{$tags}', content = '{$content}', date = now(), comment_count = {$comment_count} ";
+        $update_query .= "title = '{$title}', category_id = {$category}, author = '{$author}', status = '{$status}', image = '{$image}', tags = '{$tags}', content = '{$content}', date = now(), comment_count = {$comment_count} ";
         $update_query .= "WHERE id = {$id}";
 
         $result = mysqli_query($conn, $update_query);
@@ -150,9 +165,7 @@ function delete_posts() {
 
         $result = mysqli_query($conn, $delete_query);
 
-        if (!$result) {
-            die ('Failed query!' . mysqli_error($conn));
-        }
+        confirm_query($result);
 
         header("Location: posts.php");
     } 
