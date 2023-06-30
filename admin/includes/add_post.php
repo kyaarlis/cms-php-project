@@ -2,13 +2,16 @@
                     
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="title">Post title</label>
+                            <label for="title">Post Title</label>
                             <input class="form-control" type="text" id="title" name="title">
                         </div>
 
                         <div class="form-group">
-                            <label for="cat_id">Post Category Id</label>
-                            <input class="form-control" type="number" id="cat_id" name="cat_id">
+                            <label for="cat_id">Post Category</label>
+
+                            <select name="category_id" id="cat_id">
+                                <?php display_categories(); ?>
+                            </select>  
                         </div>
 
                         <div class="form-group">
@@ -17,7 +20,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="status">Post Title</label>
+                            <label for="status">Post Status</label>
                             <input class="form-control" type="text" id="title" name="status">
                         </div>
 

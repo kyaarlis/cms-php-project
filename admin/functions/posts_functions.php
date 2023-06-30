@@ -82,7 +82,7 @@ function add_post() {
     
     if (isset($_POST['add_post'])) {
         $title = $_POST['title'];
-        $category_id = $_POST['cat_id'];
+        $category_id = $_POST['category_id'];
         $author = $_POST['author'];
         $status = $_POST['status'];
 

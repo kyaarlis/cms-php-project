@@ -33,7 +33,7 @@ function find_all_categories() {
     $categories = mysqli_query($conn, $query);
     
     confirm_query($categories);
-    
+
     while ($row = mysqli_fetch_assoc($categories)) {
         $id = $row['id'];
         $title = $row['title'];
@@ -57,9 +57,7 @@ function delete_categories() {
 
         $result = mysqli_query($conn, $delete_query);
 
-        if (!$result) {
-            die ('Failed query!' . mysqli_error($conn));
-        }
+        confirm_query($result);
 
         header("Location: categories.php");
     } 
