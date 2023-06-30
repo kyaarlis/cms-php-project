@@ -45,7 +45,17 @@ function view_all_posts() {
         $id = $row['id'];
         $author = $row['author'];
         $title = $row['title'];
-        $category = $row['category_id'];
+        $category_id = $row['category_id'];
+
+        $query = "SELECT * FROM categories WHERE id = {$category_id}";
+
+        $categories = mysqli_query($conn, $query);
+        
+        confirm_query($categories);
+
+        $category = mysqli_fetch_assoc($categories);
+        $category = $category['title'];
+
         $status = $row['status'];
         $image = $row['image'];
         $tags = $row['tags'];

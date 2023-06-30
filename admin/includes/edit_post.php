@@ -14,9 +14,12 @@
             
                 while ($row = mysqli_fetch_assoc($posts)) {
                     $id = $row['id'];
+
+                    
+
+                    $cat_id = $row['category_id'];
                     $author = $row['author'];
                     $title = $row['title'];
-                    $category = $row['category_id'];
                     $status = $row['status'];
                     $image = $row['image'];
                     $tags = $row['tags'];

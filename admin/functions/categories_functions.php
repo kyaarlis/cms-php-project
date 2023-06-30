@@ -32,9 +32,8 @@ function find_all_categories() {
 
     $categories = mysqli_query($conn, $query);
     
-    if (!$categories) {
-        die ("Query err!" . mysqli_error($conn));
-    }
+    confirm_query($categories);
+    
     while ($row = mysqli_fetch_assoc($categories)) {
         $id = $row['id'];
         $title = $row['title'];
