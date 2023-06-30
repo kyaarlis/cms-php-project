@@ -22,9 +22,10 @@
                 $categories = mysqli_query($conn, $query);
 
                 while ($row = mysqli_fetch_assoc($categories)) {
+                    $id = $row['id'];
                     $title = $row['title'];
 
-                    echo "<li><a href='#'>{$title}</a></li>";
+                    echo "<li><a href='index.php?category_id={$id}'>{$title}</a></li>";
                 }   
                 ?>
                 <li><a href="admin">Admin</a></li>

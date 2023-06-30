@@ -21,8 +21,14 @@
 
                 <!-- Blog Post -->
                 <?php
-                    $query = "SELECT * FROM posts";
+                if (isset($_GET['category_id'])) {
+                    $category_id = $_GET['category_id'];
 
+                    $query = "SELECT * FROM posts WHERE category_id = {$category_id}";
+                } else {
+                    $query = "SELECT * FROM posts";
+                }
+                
                     $post_query = mysqli_query($conn, $query);
 
                     if (!$post_query) {
