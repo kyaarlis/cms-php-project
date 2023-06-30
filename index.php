@@ -30,6 +30,7 @@
                     }
 
                      while ($post = mysqli_fetch_assoc($post_query)) {
+                        $id = $post['id'];
                         $title = $post['title'];
                         $author = $post['author'];
                         $date = $post['date'];
@@ -38,17 +39,17 @@
                         ?>
 
                     <h2>
-                        <a href="#"><?php echo $title; ?></a>
+                        <a href="post.php?id=<?php echo $id; ?>"><?php echo $title; ?></a>
                     </h2>
                     <p class="lead">
                         by <a href="index.php"><?php echo $author; ?></a>
                     </p>
                     <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $date; ?></p>
                     <hr>
-                    <img class="img-responsive" src="images/<?php echo $img; ?>" alt="">
+                    <img class="img-responsive" width="200" src="images/<?php echo $img; ?>" alt="">
                     <hr>
                     <p><?php echo $content; ?></p>
-                    <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <a class="btn btn-primary" href="post.php?id=<?php echo $id; ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
                 <?php } ?>
                 
                 <hr>
