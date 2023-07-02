@@ -3,7 +3,15 @@
                     <h4>Leave a Comment:</h4>
                     <form role="form">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <input class="form-control" type="text" name="comment_author" placeholder="Author">
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" type="email" name="email" placeholder="E-Mail">
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3" placeholder="Your comment.."></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

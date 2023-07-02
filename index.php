@@ -41,7 +41,7 @@
                         $author = $post['author'];
                         $date = $post['date'];
                         $img = $post['image'];
-                        $content = $post['content'];
+                        $content = substr($post['content'], 0, 100);
                         ?>
 
                     <h2>
