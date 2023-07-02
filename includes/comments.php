@@ -1,7 +1,28 @@
+            
+            <?php
+
+            if (isset($_POST['submit'])) {
+                $post_id = $_GET['id'];
+
+                $comment_author = $_POST['comment_author'];
+                $email = $_POST['email'];
+                $content = $_POST['content'];
+
+                $query = "INSERT INTO comments ";
+                $query .= "(post_id, author, email, content, status, date) ";
+                $query .= "VALUES ($post_id, '{$comment_author}', '{$email}', '{$content}', 'pending', now())";
+
+                $comment_query = mysqli_query($conn, $query);
+
+                confirm_query($comment_query);
+            }
+            
+            ?>
+            
             <!-- Comments Form -->
                 <div class="well">
                     <h4>Leave a Comment:</h4>
-                    <form role="form">
+                    <form action="" method="post">
                         <div class="form-group">
                             <input class="form-control" type="text" name="comment_author" placeholder="Author">
                         </div>
@@ -11,9 +32,9 @@
                         </div>
 
                         <div class="form-group">
-                            <textarea class="form-control" rows="3" placeholder="Your comment.."></textarea>
+                            <textarea class="form-control" rows="3" placeholder="Your comment.." name="content"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                     </form>
                 </div>
 
