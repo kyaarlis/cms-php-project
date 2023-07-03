@@ -17,3 +17,4 @@
                                 <?php view_all_comments(); ?>
                             </tbody>
                         </table>
+                        
