@@ -51,13 +51,22 @@ function view_all_comments() {
         $status = $row['status'];
         $date = $row['date'];
 
+        $query = "SELECT * FROM posts WHERE id = {$post_id}";
+        $post_query = mysqli_query($conn, $query);
+
+        confirm_query($post_query);
+
+        $post = mysqli_fetch_assoc($post_query);
+        $post_id = $post['id'];
+        $post_title = $post['title'];
+
         echo "<tr>";
         echo "<td>{$id}</td>";
         echo "<td>{$author}</td>";
         echo "<td>{$email}</td>";
         echo "<td>{$content}</td>";
         echo "<td>{$status}</td>";
-        echo "<td>Some POst</td>";
+        echo "<td><a href='../post.php?id={$post_id}'>{$post_title}</a></td>";
         echo "<td>{$date}</td>";
         echo "<td><a href='comments.php?commentSrc=approve_comment&id={$id}'>Approve</a></td>";
         echo "<td><a href='comments.php?commentSrc=deny_comment&id={$id}'>Deny</a></td>";
