@@ -92,14 +92,12 @@ function add_post() {
 
         $tags = $_POST['tags'];
         $content = $_POST['content'];
-        $date = date('d-m-y');
-        $comment_count = 4;
 
         move_uploaded_file($img_temp, "../images/$image");
 
         $query = "INSERT INTO posts ";
-        $query .= "(title, category_id, author, status, image, tags, content, date, comment_count) ";
-        $query .= "VALUES ('{$title}', {$category_id}, '{$author}', '{$status}', '{$image}', '{$tags}', '{$content}', now(), {$comment_count})"; 
+        $query .= "(title, category_id, author, status, image, tags, content, date) ";
+        $query .= "VALUES ('{$title}', {$category_id}, '{$author}', '{$status}', '{$image}', '{$tags}', '{$content}', now())"; 
 
         $post_query = mysqli_query($conn, $query);
 
@@ -120,7 +118,24 @@ function display_categories() {
         $id = $row['id'];
         $category = $row['title'];
 
-        echo "<option value='{$id}'>{$category}</option>";
+        if (isset($_GET['id'])) {
+            $post_id = $_GET['id'];
+        }
+
+        $query = "SELECT * FROM posts WHERE id = {$post_id}";
+
+        $posts = mysqli_query($conn, $query);
+            
+        confirm_query($posts);
+
+        $post_row = mysqli_fetch_assoc($posts);
+
+        $cat_id = $post_row['category_id'];
+
+        // Setting option selected for the post it relates to
+        $isSelected = ($cat_id == $id) ? 'selected' : '';
+
+        echo "<option value='{$id}' {$isSelected}>{$category}</option>";
     }
 }
 
@@ -142,13 +157,16 @@ function edit_post() {
         $author = $_POST['author'];
         $status = $_POST['status'];
 
-        $image = $_FILES['image']['name'];
-        $img_temp = $_FILES['image']['tmp_name'];
+        if (empty($_FILES['image']['name'])) {
+            $image = $_POST['current_image'];
+        } else {
+            $image = $_FILES['image']['name'];
+        } 
 
+        $img_temp = $_FILES['image']['tmp_name'];
 
         $tags = $_POST['tags'];
         $content = $_POST['content'];
-        $date = date('d-m-y');
         $comment_count = 4;
 
         move_uploaded_file($img_temp, "../images/$image");
@@ -160,6 +178,7 @@ function edit_post() {
         $result = mysqli_query($conn, $update_query);
         
         confirm_query($result);
+        header("Location: posts.php");
     }
 }
 

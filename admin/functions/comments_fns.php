@@ -86,6 +86,12 @@ function delete_comment() {
 
         confirm_query($result);
 
+        $post_comment_decr_qry = "UPDATE posts SET comment_count = comment_count - 1 WHERE id = {$id}";
+
+        $comment_decr_qry = mysqli_query($conn, $post_comment_decr_qry);
+
+        confirm_query($comment_decr_qry);
+
         header("Location: comments.php");
     } 
 }

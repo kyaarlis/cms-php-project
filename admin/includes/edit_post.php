@@ -14,9 +14,6 @@
             
                 while ($row = mysqli_fetch_assoc($posts)) {
                     $id = $row['id'];
-
-                    
-
                     $cat_id = $row['category_id'];
                     $author = $row['author'];
                     $title = $row['title'];
@@ -55,7 +52,8 @@
                         <div class="form-group">
                             <label for="img" class="form-label">Post Image</label>
                             <img width="100" src="../images/<?php echo $image; ?>" alt="image">
-                            <input class="form-control" type="file" id="img" name="image" value="<?php echo $image; ?>" required>
+                            <input type="hidden" name="current_image" value="../images/<?php echo $image; ?>">
+                            <input class="form-control" type="file" id="img" name="image">
                         </div>
 
                         <div class="form-group">
