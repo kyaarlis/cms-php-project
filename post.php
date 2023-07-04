@@ -1,7 +1,6 @@
 <!-- Header -->
 <?php 
  include "db/db.php";
- include "home_functions/post_functions.php";
  include "includes/header.php"; ?>
 
   <!-- Navigation -->

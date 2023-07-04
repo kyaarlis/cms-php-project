@@ -14,28 +14,29 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
-                <h1 class="page-header">
-                    Tech Hub
-                    <small>Programmer's forum</small>
-                </h1>
-
                 <!-- Blog Post -->
                 <?php
                 if (isset($_GET['category_id'])) {
                     $category_id = $_GET['category_id'];
 
-                    $query = "SELECT * FROM posts WHERE category_id = {$category_id}";
+                    $query = "SELECT * FROM posts WHERE category_id = {$category_id} ";
+                    $query .= "AND status = 'public' ";
+                    $query .= "ORDER BY id DESC";
+
                 } else {
-                    $query = "SELECT * FROM posts";
+                    $query = "SELECT * FROM posts WHERE status = 'public'";
                 }
                 
                     $post_query = mysqli_query($conn, $query);
 
-                    if (!$post_query) {
-                        die ('Query error!' . mysqli_error($conn));
-                    }
+                    confirm_query($post_query);
 
-                     while ($post = mysqli_fetch_assoc($post_query)) {
+                    if (mysqli_num_rows($post_query) == 0) {
+                        echo "<h1 class='text-center'>Sorry, No Post</h1>";
+                    } else {
+
+
+                    while ($post = mysqli_fetch_assoc($post_query)) {
                         $id = $post['id'];
                         $title = $post['title'];
                         $author = $post['author'];
@@ -43,7 +44,11 @@
                         $img = $post['image'];
                         $content = substr($post['content'], 0, 100);
                         ?>
-
+                        
+                    <h1 class="page-header">
+                        Tech Hub
+                        <small>Programmer's forum</small>
+                    </h1>
                     <h2>
                         <a href="post.php?id=<?php echo $id; ?>"><?php echo $title; ?></a>
                     </h2>
@@ -56,8 +61,8 @@
                     <hr>
                     <p><?php echo $content; ?></p>
                     <a class="btn btn-primary" href="post.php?id=<?php echo $id; ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-                <?php } ?>
-                
+                <?php } } ?>
+
                 <hr>
 
             </div>

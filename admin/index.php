@@ -1,7 +1,5 @@
 <?php include "includes/admin_header.php" ?>
 
-<body>
-
     <div id="wrapper">
 
         <!-- Navigation -->

@@ -3,8 +3,6 @@
     include "functions/comments_fns.php";
  ?>
 
-<body>
-
     <div id="wrapper">
 
         <!-- Navigation -->

@@ -27,3 +27,5 @@
 </head>
 
 <body>
+
+<?php include "home_functions/main_functions.php"; ?>

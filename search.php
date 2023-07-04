@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
 
     $search = $_POST['search'];
     $search = strtolower($search);
-    // $search = mysqli_real_escape_string($conn, $search);
+    $search = mysqli_real_escape_string($conn, $search);
 
     $query = "SELECT * FROM posts ";
     $query .= "WHERE tags LIKE '%" . $search . "%' ";
@@ -52,14 +52,14 @@ if (isset($_POST['submit'])) {
             ?>
 
         <h2>
-            <a href="#"><?php echo $title; ?></a>
+            <a href='#'><?php echo $title; ?></a>
         </h2>
         <p class="lead">
             by <a href="index.php"><?php echo $author; ?></a>
         </p>
         <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $date; ?></p>
         <hr>
-        <img class="img-responsive" src="images/<?php echo $img; ?>" alt="">
+        <img class="img-responsive" width="200" src="images/<?php echo $img; ?>" alt="">
         <hr>
         <p><?php echo $content; ?></p>
         <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>

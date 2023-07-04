@@ -3,8 +3,6 @@
     include "functions/posts_functions.php";
  ?>
 
-<body>
-
     <div id="wrapper">
 
         <!-- Navigation -->

@@ -35,7 +35,7 @@
                             <label for="cat_id">Post Category</label>
 
                             <select name="category" id="cat_id">
-                                <?php display_categories(); ?>
+                                <?php tailored_categories(); ?>
                             </select>  
                         </div>
 

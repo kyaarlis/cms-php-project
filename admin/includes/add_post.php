@@ -6,6 +6,8 @@
                             <input class="form-control" type="text" id="title" name="title">
                         </div>
 
+                        
+
                         <div class="form-group">
                             <label for="cat_id">Post Category</label>
 
@@ -43,4 +45,4 @@
                         <div class="form-group">
                             <input class="btn btn-primary" type="submit" name='add_post' value="Publish Post">
                         </div>
-                      </form>
+                    </form>

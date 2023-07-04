@@ -60,10 +60,10 @@
                         </a>    
                         <ul id="users-dropdown" class="collapse">
                             <li>
-                                <a href="#">View Users</a>
+                                <a href="users.php">View Users</a>
                             </li>
                             <li>
-                                <a href="#">Add User</a>
+                                <a href="users.php?usrSource=add_user">Add User</a>
                             </li>
                         </ul>
                     </li>

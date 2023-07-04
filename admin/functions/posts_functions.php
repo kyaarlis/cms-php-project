@@ -96,8 +96,8 @@ function add_post() {
         move_uploaded_file($img_temp, "../images/$image");
 
         $query = "INSERT INTO posts ";
-        $query .= "(title, category_id, author, status, image, tags, content, date) ";
-        $query .= "VALUES ('{$title}', {$category_id}, '{$author}', '{$status}', '{$image}', '{$tags}', '{$content}', now())"; 
+        $query .= "(title, category_id, author, status, image, tags, content, status, date) ";
+        $query .= "VALUES ('{$title}', {$category_id}, '{$author}', '{$status}', '{$image}', '{$tags}', '{$content}', 'public' now())"; 
 
         $post_query = mysqli_query($conn, $query);
 
@@ -106,6 +106,23 @@ function add_post() {
 }
 
 function display_categories() {
+    global $conn;
+
+    $query = "SELECT * FROM categories";
+
+    $categories = mysqli_query($conn, $query);
+
+    confirm_query($categories);
+
+    while ($row = mysqli_fetch_assoc($categories)) {
+        $id = $row['id'];
+        $category = $row['title'];
+
+        echo "<option value='{$id}'>{$category}</option>";
+    }
+}
+
+function tailored_categories() {
     global $conn;
 
     $query = "SELECT * FROM categories";
