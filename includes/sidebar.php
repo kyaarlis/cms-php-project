@@ -20,7 +20,7 @@
 <!-- Login Form -->
 <div class="well">
     <h4>Login</h4>
-    <form action="login.php" method="post">
+    <form action="includes/login.php" method="post">
         <div class="form-group">
             <input type="text" class="form-control" name="username" placeholder="Username">
         </div>
