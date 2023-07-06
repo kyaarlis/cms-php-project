@@ -23,6 +23,14 @@ function select_user_actions() {
             include "includes/edit_users.php";
             break;
 
+        case "approve":
+            approve_user();
+            break;
+
+        case "deny":
+            deny_user();
+            break;
+
         default: 
 
         include "includes/view_users.php";
@@ -56,8 +64,8 @@ function view_all_users() {
         echo "<td>{$email}</td>";
         echo "<td><img width=70 src='./user_images/$user_image'/></td>";
         echo "<td>{$role}</td>";
-        echo "<td><a href='users.php?usrSource=approve&id={$id}'>Approve</a></td>";
-        echo "<td><a href='users.php?usrSource=deny&id={$id}'>Deny</a></td>";
+        echo "<td><a href='users.php?usrSource=approve&id={$id}'>Admin</a></td>";
+        echo "<td><a href='users.php?usrSource=deny&id={$id}'>Subscriber</a></td>";
         echo "<td><a href='users.php?usrSource=delete_user&id={$id}'>Delete</a></td>";
         echo "<td><a href='users.php?usrSource=edit_user&id={$id}'>Edit</a></td>";
         echo "</tr>";
@@ -160,33 +168,33 @@ function delete_user() {
 function approve_user() {
     global $conn;
 
-    if (isset($_GET['commentSrc'])) {
+    if (isset($_GET['usrSource'])) {
         $id = $_GET['id']; 
 
-        $approve_query = "UPDATE comments SET status = 'approved' ";
+        $approve_query = "UPDATE users SET role = 'admin' ";
         $approve_query .= "WHERE id = {$id}";
 
         $result = mysqli_query($conn, $approve_query);
 
         confirm_query($result);
 
-        header("Location: comments.php");
+        header("Location: users.php");
     }
 }
 
 function deny_user() {
     global $conn;
 
-    if (isset($_GET['commentSrc'])) {
+    if (isset($_GET['usrSource'])) {
         $id = $_GET['id']; 
 
-        $deny_query = "UPDATE comments SET status = 'denied' ";
+        $deny_query = "UPDATE users SET role = 'subscriber' ";
         $deny_query .= "WHERE id = {$id}";
 
         $result = mysqli_query($conn, $deny_query);
 
         confirm_query($result);
 
-        header("Location: comments.php");
+        header("Location: users.php");
     }
 }

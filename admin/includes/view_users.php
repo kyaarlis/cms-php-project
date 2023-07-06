@@ -8,8 +8,8 @@
                                     <th>E-Mail</th>
                                     <th>Image</th>
                                     <th>Role</th>
-                                    <th>Approve</th>
-                                    <th>Deny</th>
+                                    <th>Admin</th>
+                                    <th>Subscriber</th>
                                     <th>Delete</th>
                                     <th>Edit</th>
                                 </tr>
