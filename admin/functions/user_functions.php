@@ -20,7 +20,7 @@ function select_user_actions() {
             break;
 
         case "edit_user":
-            include "includes/edit_user.php";
+            include "includes/edit_users.php";
             break;
 
         default: 
@@ -98,6 +98,47 @@ function add_user() {
         header("Location: users.php");
     }
 }
+
+function edit_user() {
+    global $conn;
+
+    if (isset($_GET['usrSource'])) {
+        $id = $_GET['id']; 
+
+        $query = "SELECT * FROM users WHERE id = $id ";   
+        $user_id = mysqli_query($conn, $query);
+
+        confirm_query($user_id);
+    }
+
+    if (isset($_POST['edit_user'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $email = $_POST['email'];
+
+        if (empty($_FILES['image']['name'])) {
+            $image = $_POST['current_image'];
+        } else {
+            $image = $_FILES['image']['name'];
+        } 
+
+        $img_temp = $_FILES['image']['tmp_name']; 
+        move_uploaded_file($img_temp, "./user_images/$image");
+        
+        $user_role = $_POST['role'];
+
+        $update_query = "UPDATE users SET ";
+        $update_query .= "username = '{$username}', password = '{$password}', firstname = '{$firstname}', lastname = '{$lastname}', email = '{$email}', user_image = '{$image}', role = '{$user_role}' ";
+        $update_query .= "WHERE id = {$id}";
+
+        $result = mysqli_query($conn, $update_query);
+        
+        confirm_query($result);
+        header("Location: users.php");
+    }
+}
         
 function delete_user() {
     global $conn;
@@ -114,4 +155,38 @@ function delete_user() {
 
         header("Location: users.php");
     } 
+}
+
+function approve_user() {
+    global $conn;
+
+    if (isset($_GET['commentSrc'])) {
+        $id = $_GET['id']; 
+
+        $approve_query = "UPDATE comments SET status = 'approved' ";
+        $approve_query .= "WHERE id = {$id}";
+
+        $result = mysqli_query($conn, $approve_query);
+
+        confirm_query($result);
+
+        header("Location: comments.php");
+    }
+}
+
+function deny_user() {
+    global $conn;
+
+    if (isset($_GET['commentSrc'])) {
+        $id = $_GET['id']; 
+
+        $deny_query = "UPDATE comments SET status = 'denied' ";
+        $deny_query .= "WHERE id = {$id}";
+
+        $result = mysqli_query($conn, $deny_query);
+
+        confirm_query($result);
+
+        header("Location: comments.php");
+    }
 }
