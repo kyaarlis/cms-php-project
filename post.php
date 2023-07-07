@@ -31,7 +31,7 @@
         $date = $row['date'];
     }
    ?>
-
+<title>POst</title>
     <!-- Page Content -->
     <div class="container">
 

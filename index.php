@@ -6,6 +6,8 @@
   <!-- Navigation -->
   <?php include "includes/navbar.php" ?> 
 
+  <title>Home</title>
+
     <!-- Page Content -->
     <div class="container">
 

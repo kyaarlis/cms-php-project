@@ -26,8 +26,9 @@
                     $title = $row['title'];
 
                     echo "<li><a href='index.php?category_id={$id}'>{$title}</a></li>";
-                }   
+                 } 
                 ?>
+                
                 <li><a href="admin">Admin</a></li>
                 </ul>
             </div>
