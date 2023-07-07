@@ -1,7 +1,5 @@
 <?php
 
-include "main_functions.php";
-
 function select_comment_actions() {
 
     if (isset($_GET['commentSrc'])) {

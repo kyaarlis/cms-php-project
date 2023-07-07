@@ -11,8 +11,9 @@
 
                 <!-- Page Heading -->
                 <?php include "includes/admin_heading.php" ?>
-               
 
+                <?php check_if_user_loggedin(); ?>
+               
             </div>
             <!-- /.container-fluid -->
 

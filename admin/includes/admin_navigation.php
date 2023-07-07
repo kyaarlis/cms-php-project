@@ -1,3 +1,5 @@
+<?php include "./functions/main_functions.php"; ?>
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -8,11 +10,21 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.php">Admin</a>
+
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li>
                     <a href="../index.php">Home Page</a>
+                </li>
+                <li>
+                    <form action="" method="post">
+                        <button type="submit" name="logout" class="invisible-button">
+                            <a class="navbar-brand">Log out</a>
+                        </button>
+                        
+                    </form> 
+                    <?php log_out(); ?>
                 </li>
             
                 <!-- <li class="dropdown">

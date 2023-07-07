@@ -1,5 +1,4 @@
 <?php
-include "main_functions.php";
 
 function insert_categories() {
     global $conn;
