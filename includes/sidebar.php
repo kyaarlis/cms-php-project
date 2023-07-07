@@ -1,6 +1,6 @@
 <div class="col-md-4">
 
-<!-- Blog Search Well -->
+<!-- Blog Search Form -->
 <div class="well">
     <h4>Blog Search</h4>
     <form action="search.php" method="post">
@@ -22,10 +22,10 @@
     <h4>Login</h4>
     <form action="includes/login.php" method="post">
         <div class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Username">
+            <input type="text" class="form-control" name="username" placeholder="Username" required>
         </div>
         <div class="input-group">
-            <input type="password" class="form-control" name="password" placeholder="Enter password">
+            <input type="password" class="form-control" name="password" placeholder="Enter password" required>
             <span class="input-group-btn">
                 <button class="btn btn-primary" type="submit" name="login">Log In</button>
             </span>
@@ -51,9 +51,7 @@
 
                 $categories = mysqli_query($conn, $query);
 
-                if (!$categories) {
-                    die ("Query err!" . mysqli_error($conn));
-                }
+                confirm_query($categories);
 
                 while ($row = mysqli_fetch_assoc($categories)) {
                     $id = $row['id'];
