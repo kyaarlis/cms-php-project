@@ -30,10 +30,11 @@ if (isset($_POST['login'])) {
         $_SESSION['username'] = $db_username;
         $_SESSION['firstName'] = $db_fname;
         $_SESSION['lastName'] = $db_lname;
+        $_SESSION['userRole'] = $role;
 
         header("Location: ../admin");
     } else {
-
+        
         header("Location: ../index.php");
     }
     

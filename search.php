@@ -44,6 +44,7 @@ if (isset($_POST['submit'])) {
     } else {
 
         while ($post = mysqli_fetch_assoc($search_query)) {
+            $id = $post['id'];
             $title = $post['title'];
             $author = $post['author'];
             $date = $post['date'];
@@ -52,7 +53,7 @@ if (isset($_POST['submit'])) {
             ?>
 
         <h2>
-            <a href='#'><?php echo $title; ?></a>
+            <a href='post.php?id=<?php echo $id; ?>'><?php echo $title; ?></a>
         </h2>
         <p class="lead">
             by <a href="index.php"><?php echo $author; ?></a>
