@@ -17,6 +17,9 @@
             </div>
             <!-- /.container-fluid -->
 
+            <!-- Admin Widgets -->
+            <?php include "includes/admin_widgets.php" ?>
+
         </div>
         <!-- /#page-wrapper -->
 
