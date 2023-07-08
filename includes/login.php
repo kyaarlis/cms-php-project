@@ -23,13 +23,16 @@ if (isset($_POST['login'])) {
         $db_password = $user['password'];
         $db_fname = $user['firstname'];
         $db_lname = $user['lastname']; 
+        $db_email = $user['email']; 
         $role = $user['role']; 
     }
 
     if ($username === $db_username && password_verify($password, $db_password)) {
+        $_SESSION['user_id'] = $id;
         $_SESSION['username'] = $db_username;
         $_SESSION['firstName'] = $db_fname;
         $_SESSION['lastName'] = $db_lname;
+        $_SESSION['email'] = $db_email;
         $_SESSION['userRole'] = $role;
 
         header("Location: ../admin");
