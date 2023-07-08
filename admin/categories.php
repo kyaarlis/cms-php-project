@@ -3,8 +3,6 @@
     include "functions/categories_functions.php";
  ?>
 
-<body>
-
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -15,12 +13,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Wellcome to Admin
-                            <small>Author</small>
-                        </h1>
+                <?php include "includes/admin_heading.php" ?>
 
                         <?php insert_categories(); ?>
 

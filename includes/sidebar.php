@@ -37,9 +37,6 @@
 <!-- Blog Categories Well -->
 
 
-
-
-
 <div class="well">
     <h4>Blog Categories</h4>
     <div class="row">
