@@ -1,4 +1,8 @@
 <?php include "includes/admin_header.php"; ?>
+<?php
+include "functions/widget_functions.php";
+ include "functions/dashboard_functions.php"; 
+ ?>
 
 <div id="wrapper">
 
@@ -12,7 +16,7 @@
         <!-- Page Heading -->
         <?php include "includes/admin_heading.php" ?>
         
-        <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+        <div id="columnchart_material" style="width: auto; height: 500px;"></div>
     </div>
     <!-- /.container-fluid -->
 
@@ -27,17 +31,20 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses', 'Profit'],
-          ['2014', 1000, 400, 200],
-          ['2015', 1170, 460, 250],
-          ['2016', 660, 1120, 300],
-          ['2017', 1030, 540, 350]
+          ['CMS Stats', 'Posts',],
+          ['Public Posts',  <?php active_posts(); ?>],
+          ['Draft Posts',  <?php draft_posts(); ?>],
+          ['Public Comments',  <?php public_comment_count(); ?>],
+          ['Hidden Comments',  <?php hidden_comment_count(); ?>],
+          ['Admins',  <?php admin_count(); ?>],
+          ['Subscribers',  <?php subscriber_count(); ?>],
+          ['Categories',  <?php categories_count(); ?>],
         ]);
 
         var options = {
           chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+            title: '',
+            subtitle: '',
           }
         };
 

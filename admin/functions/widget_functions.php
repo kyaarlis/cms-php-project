@@ -28,6 +28,7 @@ function comment_count() {
     echo $comment_count;
 }
 
+
 function user_count() {
     global $conn;
 
@@ -55,3 +56,4 @@ function categories_count() {
 
     echo $categories_count;
 }
+
