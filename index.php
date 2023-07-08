@@ -44,7 +44,7 @@
                         $author = $post['author'];
                         $date = $post['date'];
                         $img = $post['image'];
-                        $content = substr($post['content'], 0, 100);
+                        $content = substr($post['content'], 100);
                         ?>
                         
                     <h1 class="page-header">

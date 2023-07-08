@@ -31,7 +31,7 @@ include "functions/widget_functions.php";
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['CMS Stats', 'Posts',],
+          ['CMS Stats', 'Count',],
           ['Public Posts',  <?php active_posts(); ?>],
           ['Draft Posts',  <?php draft_posts(); ?>],
           ['Public Comments',  <?php public_comment_count(); ?>],
