@@ -31,7 +31,6 @@
         $date = $row['date'];
     }
    ?>
-<title>POst</title>
     <!-- Page Content -->
     <div class="container">
 
@@ -47,7 +46,7 @@
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#"><?php echo $author; ?></a>
+                    by <a href="index.php?author=<?php echo $author; ?>"><?php echo $author; ?></a>
                 </p>
 
                 <hr>
@@ -59,6 +58,8 @@
 
                 <!-- Preview Image -->
                 <img class="img-responsive" width="300" src="images/<?php echo $image; ?>" alt="">
+
+                <i class="fa-regular fa-heart"></i>
 
                 <hr>
 

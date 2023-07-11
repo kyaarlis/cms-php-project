@@ -36,7 +36,7 @@ function display_posts() {
             $author = $post['author'];
             $date = $post['date'];
             $img = $post['image'];
-            $content = substr($post['content'], 100);
+            $content = substr($post['content'], 0, 100);
             ?>
         <h2>
             <a href="post.php?id=<?php echo $id; ?>"><?php echo $title; ?></a>
