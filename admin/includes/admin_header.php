@@ -40,3 +40,12 @@
 </head>
 
 <body>
+
+<?php
+    // If user is not admin or logged in then don't let user in admin 
+    // when admin button in clicked
+
+    if (!$_SESSION['username']) {
+        header("Location: ../index.php");
+    }
+?>
