@@ -18,13 +18,13 @@
 
                         <div class="form-group">
                             <label for="author">Post Author</label>
-                            <input class="form-control" type="text" id="author" name="author">
+                            <input class="form-control" type="text" id="author" name="author" value="<?php echo $_SESSION['username'] ?>">
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="status">Post Status</label>
                             <input class="form-control" type="text" id="title" name="status">
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <label for="img" class="form-label">Post Image</label>

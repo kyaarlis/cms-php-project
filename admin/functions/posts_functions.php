@@ -83,7 +83,7 @@ function add_post() {
         $title = $_POST['title'];
         $category_id = $_POST['category_id'];
         $author = $_POST['author'];
-        $status = $_POST['status'];
+        // $status = $_POST['status'];
 
         $image = $_FILES['image']['name'];
         $img_temp = $_FILES['image']['tmp_name'];
@@ -95,12 +95,14 @@ function add_post() {
         move_uploaded_file($img_temp, "../images/$image");
 
         $query = "INSERT INTO posts ";
-        $query .= "(title, category_id, author, status, image, tags, content, status, date) ";
-        $query .= "VALUES ('{$title}', {$category_id}, '{$author}', '{$status}', '{$image}', '{$tags}', '{$content}', 'public' now())"; 
+        $query .= "(title, category_id, author, image, tags, content, status, date) ";
+        $query .= "VALUES ('{$title}', {$category_id}, '{$author}', '{$image}', '{$tags}', '{$content}', 'public', now())"; 
 
         $post_query = mysqli_query($conn, $query);
 
         confirm_query($post_query);
+
+        header('Location: posts.php');
     }
 }
 
