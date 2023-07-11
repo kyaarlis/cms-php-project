@@ -59,13 +59,42 @@
                 <!-- Preview Image -->
                 <img class="img-responsive" width="300" src="images/<?php echo $image; ?>" alt="">
 
-                <i class="fa-regular fa-heart"></i>
-
                 <hr>
 
                 <!-- Post Content -->
                 <p class="lead"><?php echo $content; ?></p>
+
+                <!-- <button ></button> -->
+                <a class="btn btn-danger" href="post.php?id=<?php echo $id; ?>&liked">Like Button</a>
+                
                 <hr>
+
+                <?php
+
+                    if (isset($_GET['liked'])) {
+                        $query = "UPDATE posts SET likes = likes + 1";
+
+                        $result = mysqli_query($conn, $query);
+
+                        confirm_query($result);
+
+                        $post = mysqli_fetch_assoc($result);
+                        $likes = $post['likes'];
+
+                        header("Location: posts.php");
+                    }
+
+                    $post_query = "SELECT likes FROM posts";
+
+                    $result = mysqli_query($conn, $post_query);
+
+                    confirm_query($result);
+
+                    $post = mysqli_fetch_assoc($result);
+                    $likes = $post['likes'];
+                
+                ?>
+                <h3>Likes: <?php echo $likes; ?></h3>
 
                 <!-- Blog Comments -->
                <?php include "includes/comments.php"; ?>
