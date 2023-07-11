@@ -9,10 +9,10 @@
   <?php 
     if (isset($_GET['id'])) {
         $post_id = $_GET['id'];
-    }
+    } 
     
     global $conn;
-    
+
     $query = "SELECT * FROM posts WHERE id = {$post_id}";
     
     $post = mysqli_query($conn, $query);
@@ -29,6 +29,7 @@
         $comments = $row['comment_count'];
         $content = $row['content'];
         $date = $row['date'];
+        $likes = $row['likes'];
     }
    ?>
     <!-- Page Content -->
@@ -64,35 +65,37 @@
                 <!-- Post Content -->
                 <p class="lead"><?php echo $content; ?></p>
 
-                <!-- <button ></button> -->
-                <a class="btn btn-danger" href="post.php?id=<?php echo $id; ?>&liked">Like Button</a>
+                
+                <form action="" method="post">
+                    <button class="btn btn-danger" type="submit" name="liked">Like Button</button>
+                </form>
+                
                 
                 <hr>
 
                 <?php
 
-                    if (isset($_GET['liked'])) {
-                        $query = "UPDATE posts SET likes = likes + 1";
+                    if (isset($_POST['liked'])) {
+                        $query = "UPDATE posts SET likes = likes + 1 WHERE id = {$post_id}";
+
+                     } else {
+                        $query = "SELECT likes FROM posts WHERE id = {$post_id}";
+                    }
 
                         $result = mysqli_query($conn, $query);
 
                         confirm_query($result);
 
-                        $post = mysqli_fetch_assoc($result);
-                        $likes = $post['likes'];
+                        // if (mysqli_num_rows($result) == 0) {
+                        //     echo "<h1 class='text-center'>No likes</h1>";
+                        // }
 
-                        header("Location: posts.php");
-                    }
+                        while ($post_likes = mysqli_fetch_assoc($result)) {
+                            $likes = $post_likes['likes'];
+                        }
 
-                    $post_query = "SELECT likes FROM posts";
-
-                    $result = mysqli_query($conn, $post_query);
-
-                    confirm_query($result);
-
-                    $post = mysqli_fetch_assoc($result);
-                    $likes = $post['likes'];
-                
+                        // header("Location: posts.php");
+             
                 ?>
                 <h3>Likes: <?php echo $likes; ?></h3>
 
